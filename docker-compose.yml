@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    image: posts-app
+    container_name: posts-app
+    restart: unless-stopped
+    mem_limit: 256m
+    volumes:
+      - posts-data:/app/data
+    networks:
+      - edge
+
+networks:
+  edge:
+    external: true
+
+volumes:
+  posts-data:
